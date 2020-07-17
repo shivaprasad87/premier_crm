@@ -463,7 +463,7 @@ echo "<script>printFunction();</script>";
 
   </script> 
 </div> 
-	<p class="footer">&copy; <?=date('Y');?> Premier Real Estates. All Rights Reserved | Developed by <a href="http:s//secondsdigital.com"> Premier Real Estate solutions</a></p>
+	<p class="footer">&copy; <?=date('Y');?> Premier Real Estates. All Rights Reserved | Developed by <a href="#"> Premier Real Estate solutions</a></p>
 </div>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/starrr.js"></script>
 

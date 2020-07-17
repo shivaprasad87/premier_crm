@@ -617,7 +617,7 @@ img.ribbon {
  
 		</form>
 	</div>
-	<p class="footer">&copy; <?=date('Y');?> Premier Real Estates. All Rights Reserved | Developed by <a href="http:s//secondsdigital.com"> Premier Real Estate solutions</a></p>
+	<p class="footer">&copy; <?=date('Y');?> Premier Real Estates. All Rights Reserved | Developed by <a href="#"> Premier Real Estate solutions</a></p>
 </div>
 
 <script src="http:s//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
