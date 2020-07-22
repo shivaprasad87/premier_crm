@@ -262,7 +262,7 @@ input[readonly] {
                                                                 
                                                                 <p>Bangaluru Karnataka - 560102</p>
 																<p><!--Rera : PRM/KA/RERA/1251/446/AG/170926/000120<br>-->
-L:  080-2331375</p>
+</p>
 																</div>
 																	
 																	</div>
