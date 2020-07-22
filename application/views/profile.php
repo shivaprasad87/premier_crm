@@ -258,9 +258,9 @@ input[readonly] {
  	                                                      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15555.99068738032!2d77.6519476!3d12.9078709!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd5f23f8663aedf57!2sPremier%20Real%20Estate%20Services!5e0!3m2!1sen!2sin!4v1595412797566!5m2!1sen!2sin" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 															<div class="gmap-info">
 																<h4> <i class="fa fa-map-marker"></i> <b><a href="#" class="text-dark">Premier Real Estates</a></b></h4>
-																<p>hayes Road, Richmond Circle</p>
+																<p>No.338,3rd floor Premier Real Estate Services</p>
                                                                 
-                                                                <p>Bangaluru Karnataka - 560025</p>
+                                                                <p>Bangaluru Karnataka - 560102</p>
 																<p><!--Rera : PRM/KA/RERA/1251/446/AG/170926/000120<br>-->
 L:  080-2331375</p>
 																</div>
