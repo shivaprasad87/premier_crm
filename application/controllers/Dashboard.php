@@ -89,7 +89,7 @@ class Dashboard extends CI_Controller {
             $data['site_visit_data'] = $fetchData;
 
         }
-        elseif ($this->session->userdata('user_type') == 'manager'){
+        elseif ($this->session->userdata('user_type') == 'manager' || $this->session->userdata('user_type') == 'director'){
             $data['imp_callbacks'] = $this->callback_model->fetch_important_callbacks($data['user_id']);
             $data['team_members'] = $this->user_model->get_team_members($data['user_id']);
 
