@@ -314,7 +314,7 @@
 																 <div class="clearfix"> </div>
 														</div>
 												<?php }
-												elseif ($this->session->userdata('user_type')=="manager" || this->session->userdata('user_type')=="director"  ) { 
+												elseif ($this->session->userdata('user_type')=="manager" || $this->session->userdata('user_type')=="director"  ) { 
 
         ?>
          <style>
