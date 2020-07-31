@@ -329,7 +329,7 @@ class Admin extends CI_Controller {
 				'email2'=>$email2,
 				'project_id'=>$project,
 				'lead_source_id'=>$lead_source,
-				'leadid'=> trim("PMR-".sprintf("%'.011d",$lead_ids).PHP_EOL),
+				'leadid'=> trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
 				'user_id'=>$user_name,
 				'due_date'=>$due_date,
 				'broker_id'=>$sub_broker,
@@ -353,7 +353,7 @@ class Admin extends CI_Controller {
 				'email2'=>$email2,
 				'project_id'=>$project,
 				'lead_source_id'=>$lead_source,
-				'leadid'=> trim("PMR-".sprintf("%'.011d",$lead_ids).PHP_EOL),
+				'leadid'=> trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
 				'user_id'=>$user_name,
 				'due_date'=>$due_date,
 				'broker_id'=>$sub_broker,
@@ -477,8 +477,9 @@ class Admin extends CI_Controller {
 				'date_added'=>$query->date_added,
 				'last_update'=>$query->last_update,
 				'active'=>$query->active,	
-	            'budget'=>$query->budget,  
-	            'Locality' => $query->Locality,
+	            'budget'=>$query->budget,   
+	            'city'=>$query->city,
+            	'location'=>$query->location, 
 	            'p_type' => $query->p_type,
 	            'possesion' => $query->possesion,
 	            'a_services' => $query->a_services,
@@ -960,7 +961,7 @@ $customer_req = array(
 			if($dead_reason!==null){
 				$this->session->set_userdata("dead_reason", $dead_reason);
 				if($dead_reason)
-					$where.=" AND cb.reason_cause=".trim($dead_reason);
+					$where.=" AND cb.reason_cause='".trim($dead_reason)."'";
 			}
 			
 			$srxhtxt = trim($this->input->post('srxhtxt'));
@@ -2093,7 +2094,7 @@ $customer_req = array(
 				$email1Key = array_search('Email', $keyArray);
 				$email2Key = array_search('Email 2', $keyArray);
 				$leadIdKey = array_search('Lead Id', $keyArray);
-				//$leadIdKey = "PMR - ".sprintf("%'.011d",$lead_ids).PHP_EOL;
+				//$leadIdKey = "FBP - ".sprintf("%'.011d",$lead_ids).PHP_EOL;
 				$notesKey = array_search('Notes', $keyArray);
 				$highestRow = $worksheet->getHighestRow();
 				$newCallbacks = array();
@@ -2124,7 +2125,7 @@ $customer_req = array(
 						'contact_no2'=>trim($contact_no2),
 						'email1'=>trim($email1),
 						'email2'=>trim($email2),
-						'leadid'=>trim("PMR-".sprintf("%'.011d",$lead_ids++).PHP_EOL),
+						'leadid'=>trim("FBP-".sprintf("%'.011d",$lead_ids++).PHP_EOL),
 						'notes'=>trim($notes),
 					);
 					// print_r($data);exit;
@@ -2207,7 +2208,7 @@ $customer_req = array(
         $offset = !$page ? 0 : $page;
 		//------ End --------------
 
-      $data['leads'] = $this->common_model->getAll('online_leads',VIEW_PER_PAGE,$offset);
+      $data['leads'] = $this->common_model->getWhere(array('saved'=>0),'online_leads',VIEW_PER_PAGE,$offset);
 		$this->load->view('admin/online_leads',$data);
 	}
 	public function acres99_leads()
@@ -2440,7 +2441,8 @@ $customer_req = array(
 	public function save_online_leads(){
 
 		$error=0;
-		$ext='';
+		$ext='online_leads';
+		$p_id['id']='';
 		if($this->input->post()){
 			$dept=$this->input->post('dept');
 			$callback_type=$this->input->post('callback_type');
@@ -2450,10 +2452,12 @@ $customer_req = array(
 			$due_date=$this->input->post('due_date');
 			$due_time=$this->input->post('due_time');
 			$checked=$this->input->post('check');
+			$project_id=$this->input->post('project');
 
 			foreach ($checked as $key) {
 				$return[] = $key;
 				$lead_data = $this->common_model->getFromId($key, 'id', 'online_leads');
+
 				if($lead_data->source=='99acres')
 				{
 				$p_id=$this->common_model->get_project_id_by_name($lead_data->project,1);
@@ -2474,7 +2478,7 @@ $customer_req = array(
 				}
 				else
 				{
-					//$p_id=703;
+					$p_id=704;
 				}
 				//echo $lead_data->project. $p_id['id'];die;
 				$data=$this->common_model->getsourceId($lead_data->source);
@@ -2485,7 +2489,7 @@ $customer_req = array(
 					'contact_no1'=>$lead_data->phone,
 					'callback_type_id'=>$callback_type,
 					'email1'=>$lead_data->email,
-					'project_id'=>$p_id['id'],
+					'project_id'=>$project_id,
 					'lead_source_id'=>$data['id'],
 					'leadid'=>$lead_data->leadid,
 					'user_id'=>$user,
@@ -2508,25 +2512,26 @@ $customer_req = array(
 					//$ext='admin/'.$this->session->userdata('ext');
 					//$this->load->view('admin/online_leads');
 				}
-				$this->common_model->updateWhere(array('id'=>$lead_data->id));
 
+				$this->common_model->updateWhere_leadid(array('id'=>$lead_data->id));
+				//echo $this->db->last_query();die;
 				//echo json_encode($return);
 			}
-			if($data['lead_source_id']==30)
-			{
-					$ext="acres99_leads";
-					$this->session->set_userdata('ext',$ext);
-			}
-				elseif($data['lead_source_id']==29)
-				{
-					$ext="magicbricks_leads";
-					$this->session->set_userdata('ext',$ext);
-				}
-				elseif($data['lead_source_id']==32)
-				{
-					$ext="commonfloor_leads";
-					$this->session->set_userdata('ext',$ext);
-				}
+			// if($data['lead_source_id']==30)
+			// {
+			// 		$ext="acres99_leads";
+			// 		$this->session->set_userdata('ext',$ext);
+			// }
+			// 	elseif($data['lead_source_id']==29)
+			// 	{
+			// 		$ext="magicbricks_leads";
+			// 		$this->session->set_userdata('ext',$ext);
+			// 	}
+			// 	elseif($data['lead_source_id']==32)
+			// 	{
+			// 		$ext="commonfloor_leads";
+			// 		$this->session->set_userdata('ext',$ext);
+			// 	}
 				//echo site_url()
 				if($error==0)
 				echo "<script>alert('added successfully');location.href='".base_url().'admin/'.$ext."'</script>";
@@ -3275,7 +3280,8 @@ public function make_user_online($value='')
 		{
 			$subject="Users Login Report";
 			$mail_body = $this->load->view("reports/user_track_report", $data, true);
-			$to_emails ="digilance5@gmail.com"; 
+			$to_emails ="hr@fullbasketproperty.com, vickyvani@fullbasketproperty.com, manjitvani@fullbasketproperty.com, sgupta@fullbasketproperty.com,shiva@secondsdigital.com";
+			// $to_emails ="hr@fullbasketproperty.com, shiva@secondsdigital.com";
 			$this->load->library('email');
 			$config = email_config();
 			
@@ -3389,6 +3395,32 @@ public function make_user_online($value='')
 //echo $this->db->last_query();die;
 		//print_r($data);
 		$this->load->view('reports/re_site_visit_by_id',$data);
+	}
+
+	public function lead_report($fromDate='',$toDate='',$user_id='',$lead_source_id='',$project_id='')
+	{
+		$fromDate = $this->input->get_post('fromDate');
+		$toDate = $this->input->get_post('toDate');
+		$user_id = $this->input->get_post('user_id');
+		$lead_source_id = $this->input->get_post('lead_source_id');
+		$project_id = $this->input->get_post('project_id');
+		$result= $this->callback_model->get_lead_report($fromDate,$toDate,$user_id,$lead_source_id,$project_id);
+		
+		if($lead_source_id!=''&& $project_id!='')
+		{
+			$data['name'] = "Lead Report";
+        	$data['heading'] = "Lead Report";
+
+	        $data['fromDate'] = $this->input->post_get('fromDate');
+	        $data['toDate'] = $this->input->post_get('toDate');
+	        $data['advisor'] = $user_id;
+			$data['result'] = $result;
+			$this->load->view('reports/new_lead_report',$data);
+		}
+		else
+		{
+			echo json_encode($result);
+		}
 	}
 	 
 

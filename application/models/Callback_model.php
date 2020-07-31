@@ -1323,4 +1323,10 @@ $list_id=implode(',', $ids);
 
         return $query->result_array();
     }
+        public function countAllwhere($table_name = '') {
+        if ($table_name == '')
+            $table_name = $this->table_name;
+
+        return $this->db->count_all($table_name)->where('saved',0);
+    }
 }

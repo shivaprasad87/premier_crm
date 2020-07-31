@@ -4,33 +4,17 @@ if ( ! function_exists('email_config'))
 {
     function email_config()
     {
-        // $config['protocol']    = 'smtp';
-        // $config['smtp_host']    = 'ssl://smtp.gmail.com';
-        // $config['smtp_port']    = '465';
-        // $config['smtp_timeout'] = '7';
-        // $config['smtp_user']='miryalashivaprasad87@gmail.com';
-        // $config['smtp_pass']='9866115824';
-        // $config['charset']    = 'utf-8';
-        // $config['newline']    = "\r\n";
-        // $config['mailtype'] = 'html'; // or html
-        // $config['validation'] = TRUE; // bool whether to validate email or not 
-        // $config['protocol'] = 'sendmail';
-        // $config['mailpath'] = '/usr/sbin/sendmail';
-        // $config['charset'] = 'utf-8';
-        // $config['wordwrap'] = TRUE;
-        // $config['mailtype'] = 'html';
-        $config['protocol']='smtp';
-$config['smtp_host']='ssl://smtp.gmail.com';
-$config['smtp_port']='465';
-$config['smtp_timeout']='30';
-$config['smtp_user']='secondsdigitalsolutions@gmail.com';
-$config['smtp_pass']='Password1982';
-$config['charset']='utf-8';
-$config['newline']="\r\n";
-$config['wordwrap'] = TRUE;
-$config['mailtype'] = 'html';
+    $config['smtp_host']='ssl://smtp.gmail.com';
+    $config['smtp_port']='465';
+    $config['smtp_timeout']='30';
+    $config['smtp_user']='messagesfrom6@gmail.com';
+    $config['smtp_pass']='Messages@2020';
+    $config['charset']='utf-8';
+    $config['newline']="\r\n";
+    $config['wordwrap'] = TRUE;
+    $config['mailtype'] = 'html';
 
-        return $config;
+        return $config; 
     }   
 }
 

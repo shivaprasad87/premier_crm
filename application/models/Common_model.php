@@ -447,15 +447,19 @@ class Common_model extends MY_Model {
             }
         }
 
-           function updateWhere($where,$data=1,$table_name='online_leads')
+           function updateWhere_leadid($where,$data=1,$table_name='online_leads')
             {
-
-              foreach ($where as $leadid) {
-               // print_r($where);die;
                 $this->db->set('saved',1);
-                $this->db->where('id', $where['id']);
-                $this->db->update('online_leads');       
-            }
+                $this->db->where($where);
+                $this->db->update('online_leads'); 
+            //     print_r($where);die;
+            //   foreach ($where as $leadid) {
+            //    // print_r($where);die;
+            //     $this->db->set('saved',1);
+            //     $this->db->where('id', $leadid['id']);
+            //     $this->db->update('online_leads');       
+            // }
+               // echo $this->db->last_query();die;
             return true;
             }
        

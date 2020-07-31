@@ -407,7 +407,17 @@
 							</select>
 						</div>
 					</div>
-
+					<div class="form-group">
+                    <label for="email" class="control-label col-sm-3">Project*</label>
+                    <div class="col-sm-9">
+                        <select type="email" class="form-control" name="project" required>
+                            <?php $projects= $this->common_model->all_active_projects(); 
+                            foreach( $projects as $project){ ?>
+                                <option value="<?php echo $project->id ?>"><?php echo $project->name ?></option>
+                            <?php }?> 
+                        </select>
+                    </div>
+                </div>
 					<div class="form-group">
 						<label for="email" class="control-label col-sm-3">Due Date*</label>
 						<div class="col-sm-9">
