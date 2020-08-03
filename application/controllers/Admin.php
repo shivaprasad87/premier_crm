@@ -3245,7 +3245,7 @@ if ($err) {
 		$lead_id =  $this->uri->segment(3);
 		$controller_name= $this->uri->segment(4);
 		$lead_id = array('id'=>$lead_id);
-		$bool = $this->common_model->updateWhere($lead_id);
+		$bool = $this->common_model->updateWhere_leadid($lead_id);
 		if($bool)
 		{
 			echo "<script>location.href='".base_url().'admin/'.$controller_name."';</script>";
