@@ -329,7 +329,7 @@ class Admin extends CI_Controller {
 				'email2'=>$email2,
 				'project_id'=>$project,
 				'lead_source_id'=>$lead_source,
-				'leadid'=> trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
+				'leadid'=> trim("PMR-".sprintf("%'.011d",$lead_ids).PHP_EOL),
 				'user_id'=>$user_name,
 				'due_date'=>$due_date,
 				'broker_id'=>$sub_broker,
@@ -2482,7 +2482,8 @@ $customer_req = array(
 				}
 				//echo $lead_data->project. $p_id['id'];die;
 				$data=$this->common_model->getsourceId($lead_data->source);
-
+				$lead_ids = json_decode(json_encode($this->callback_model->get_last_id()),true);
+			$lead_ids = $lead_ids['id']+1;
 				$data=array(
 					'dept_id'=>$dept,
 					'name'=>$lead_data->name,
@@ -2491,7 +2492,7 @@ $customer_req = array(
 					'email1'=>$lead_data->email,
 					'project_id'=>$project_id,
 					'lead_source_id'=>$data['id'],
-					'leadid'=>$lead_data->leadid,
+					'leadid'=> trim("PMR-".sprintf("%'.011d",$lead_ids).PHP_EOL),
 					'user_id'=>$user,
 					'due_date'=>$due_date,
 					'broker_id'=>$broker,
