@@ -323,7 +323,7 @@
               <ul class="pagination pull-right"><?php echo $links; ?></ul> 
         </div>
 		</div>
-	
+	</div>
 
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
@@ -331,7 +331,7 @@
 						<h1>Default Callback Assignment</h1>
 					</div>
 
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="email" class="control-label col-sm-3">Dept*</label>
 						<div class="col-sm-9">
 							<select type="email" class="form-control" name="dept" required>
@@ -342,6 +342,7 @@
 							</select>
 						</div>
 					</div>
+					<div class="clearfix"></div>
 
 					<div class="form-group">
 						<label for="email" class="control-label col-sm-3">Callback type*</label>
@@ -353,12 +354,13 @@
 								<?php }?>
 							</select>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="form-group">
 						<label for="email" class="control-label col-sm-3">Assigned to*</label>
 						<div class="col-sm-9">
 							<select type="email" class="form-control" name="user" required>
+								<option value="">---Select User---</option>
 								<?php $all_user= $this->user_model->all_users("type in (1,2,3,4)");
 								foreach( $all_user as $user){
 									switch ($user->type) {
@@ -384,7 +386,7 @@
 						</div>
 					</div>
 
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="email" class="control-label col-sm-3">Broker*</label>
 						<div class="col-sm-9">
 							<select type="email" class="form-control" name="broker" required>
@@ -406,11 +408,15 @@
 								<?php } ?>
 							</select>
 						</div>
-					</div>
+					</div> -->
+
+                <div class="clearfix"></div>
+                <br>
 					<div class="form-group">
                     <label for="email" class="control-label col-sm-3">Project*</label>
                     <div class="col-sm-9">
                         <select type="email" class="form-control" name="project" required>
+                        	<option value="">---Select Project---</option>
                             <?php $projects= $this->common_model->all_active_projects(); 
                             foreach( $projects as $project){ ?>
                                 <option value="<?php echo $project->id ?>"><?php echo $project->name ?></option>
@@ -418,19 +424,19 @@
                         </select>
                     </div>
                 </div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="email" class="control-label col-sm-3">Due Date*</label>
 						<div class="col-sm-9">
 							<input type="date" id="dt" class="form-control" name="due_date" required />
 						</div>
 					</div>
-
-					<div class="form-group">
+					-->
+					<div class="form-group" hidden="">
 						<label for="email" class="control-label col-sm-3">Due Time*</label>
 						<div class="col-sm-9">
-							<input type="time" id="dt" class="form-control" name="due_time" value="00:00"/>
+							<input type="time" id="dt" class="form-control" name="due_time" value="<?=date('H:i')?>"/>
 						</div>
-					</div>
+					</div> 
 
 					<div class="form-group">
 						<div class="col-sm-offset-3">&nbsp;</div>

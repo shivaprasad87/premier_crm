@@ -2444,13 +2444,13 @@ $customer_req = array(
 		$ext='online_leads';
 		$p_id['id']='';
 		if($this->input->post()){
-			$dept=$this->input->post('dept');
-			$callback_type=$this->input->post('callback_type');
+			$dept=$this->input->post('dept')?$this->input->post('dept'):1;
+			$callback_type=$this->input->post('callback_type')?$this->input->post('callback_type'):1;
 			$user=$this->input->post('user');
-			$broker=$this->input->post('broker');
-			$status=$this->input->post('status');
-			$due_date=$this->input->post('due_date');
-			$due_time=$this->input->post('due_time');
+			$broker=$this->input->post('broker')?$this->input->post('broker'):14;
+			$status=$this->input->post('status')?$this->input->post('status'):1;
+			$due_date=$this->input->post('due_date')?$this->input->post('due_date'):date('Y-m-d');
+			$due_time=$this->input->post('due_time')?$this->input->post('due_time'):date('H:i');
 			$checked=$this->input->post('check');
 			$project_id=$this->input->post('project');
 
