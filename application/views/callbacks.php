@@ -389,7 +389,7 @@
                 foreach ($result as $data) {
                     $duedate = explode(" ", $data->due_date);
                     $duedate = $duedate[0]; ?>
-                    <tr id="row<?php echo $i ?>" <?php if(strtotime($duedate)<strtotime('today')){?> class="highlight_past" <?php }elseif(strtotime($duedate) == strtotime('today')) {?> class="highlight_now" <?php }elseif(strtotime($duedate)>strtotime('today')){ ?> class="highlight_future" <?php } ?>>
+                    <tr id="row<?php echo $i ?>" if <?php if($data->status_name=='New') echo "style='font-weight:bold'"; if(strtotime($duedate)<strtotime('today')){?> class="highlight_past" <?php }elseif(strtotime($duedate) == strtotime('today')) {?> class="highlight_now" <?php }elseif(strtotime($duedate)>strtotime('today')){ ?> class="highlight_future" <?php } ?>>
                         <td class="priority-1"><?php echo $i; ?></td>
                         <td class="priority-2"><?php echo $data->name; ?></td>
                         <td class="priority-3"><?php echo $data->contact_no1 ?></td>

@@ -193,8 +193,9 @@
                     <select  class="form-control"  id="m_status" onchange="status(this.value)" name="status_id" required="required" <?php if(!$edit) echo 'disabled'; ?>>
                         <option value="">Select</option>
                         <?php $statuses= $this->common_model->all_active_statuses(); 
+                        unset($statuses[8]);
                         foreach( $statuses as $status){ ?>
-                            <option value="<?php echo $status->id; ?>" <?php echo ($status->id == $manage_status) ? 'selected' : ''; ?>><?php echo $status->name ?></option>
+                            <option value="<?php echo $status->id; ?>" <?php echo ($status->id == 3) ? 'selected' : ''; ?>><?php echo $status->name ?></option>
                         <?php } ?>           
                     </select>
                 </div>
