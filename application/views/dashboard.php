@@ -676,7 +676,7 @@
             </div>
         </div>
     <?php }
-    else{ ?>
+    elseif($this->session->userdata('user_type')=="director" ) { ?>
         <div class="container"> 
             <div class="top-mg dash-wd">
                 <div class="col-md-5">
@@ -799,7 +799,7 @@
             </div>
         </div>
     <?php } 
-    elseif($this->session->userdata('user_type')=="director" ) { ?>
+    else{ ?>
         <div class="container"> 
             <div class="top-mg dash-wd">
                 <div class="col-md-5">
