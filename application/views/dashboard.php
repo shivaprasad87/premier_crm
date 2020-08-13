@@ -314,7 +314,7 @@
 																 <div class="clearfix"> </div>
 														</div>
 												<?php }
-												elseif ($this->session->userdata('user_type')=="manager" || $this->session->userdata('user_type')=="director"  ) { 
+												elseif ($this->session->userdata('user_type')=="manager"){ 
 
         ?>
          <style>
@@ -676,79 +676,195 @@
             </div>
         </div>
     <?php }
-    elseif($this->session->userdata('user_type')=="director" ) { ?>
+    else{ ?>
+    	<style>
+
+        .stats-right{
+            padding: 25px 0px;
+        } 
+        .stats-right label{
+            font-size: 1em; 
+            color: #3E3D3D;
+            word-break: break-all;
+        }
+        #textright{
+            padding: 37px 0px;
+        }
+        @media (max-width:1366px){
+            .stats-right{
+            padding: 25px 0px;
+        } 
+        .stats-right label{
+            font-size: 1em; 
+            color: #3E3D3D;
+            word-break: break-all;
+        }
+        #textright{
+            padding: 37px 0px;
+        }
+        }
+        @media (max-width:1366px){
+            .stats-right{
+            padding: 25px 0px;
+        } 
+        .stats-right label{
+            font-size: 1em; 
+            color: #3E3D3D;
+            word-break: break-all;
+        }
+        #textright{
+            padding: 37px 0px;
+        }
+        }
+        /*@media (max-width:1280px){
+            .stats-right{
+            padding: 21px 0px;
+        } 
+       
+        #textright{
+            padding: 32px 0px;
+        }
+        }*/
+        @media (max-width:1150px){
+            .stats-right{
+            padding: 33px 0px;
+}
+        } 
+       
+        #textright{
+            padding: 32px 0px;
+        }
+        }
+
+        @media (max-width:930px){
+            .stats-right{
+            padding: 2px 0px;
+        } 
+       
+        #textright{
+            padding: 24px 0px;
+        }
+        }
+        @media (max-width:768px){
+            .stats-right{
+            padding: 2px 0px;
+        } 
+       
+        #textright{
+            padding: 24px 0px;
+        }
+        }
+        </style>
+
+												   <div class="row-one">
+														<div class="col-md-3 widget">
+															<div class="stats-left ">
+																<h5>Team</h5>
+																<h4> Revenue</h4>
+															</div>
+															<div class="stats-right" >
+																<label style=""><a href="#" ><?php echo $total_team_revenue?$total_team_revenue:0; ?></a></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-mdl">
+															<div class="stats-left">
+																<h5>Own</h5>
+																<h4>Closed Calls</h4>
+															</div>
+															<div class="stats-right" id="textright">
+																<label> <a href="#" class="view_callbacks" data-type="manager_close"><?php echo $close_leads_count; ?></a></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-thrd">
+															<div class="stats-left">
+																<h5>Total Calls </h5>
+																<h4>For Team</h4>
+															</div>
+															<div class="stats-right" id="textright">
+																<label><a href="<?php echo base_url().'view_callbacks?advisor='.$team_members; ?>" ><?php echo $total_calls; ?></a></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-last">
+															<div class="stats-left">
+																<h5>Own</h5>
+																<h4>Revenue</h4>
+															</div>
+															<div class="stats-right">
+																<label> <?php echo $total_revenue; ?></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="clearfix"> </div>	
+													</div> 
         <div class="container"> 
             <div class="top-mg dash-wd">
-                <div class="col-md-5">
-                    <div class="row top-mg dash-wd">
-                        <h2>Productivity</h2>
+                <div class="tab-inner">
+												      <div id="tabs" class="tabs">
+															<div class="graph">
+																					<nav>
+																						<ul>
+																							<li class="tab-current"><a href="#section-1" class="icon-shop"><i class="lnr lnr-briefcase"></i> <span>Important Calls</span></a></li>
+																							<li><a href="#section-2" class="icon-cup"><i class="lnr lnr-lighter"></i> <span>Site Visit Fixed</span></a></li>
+																						</ul>
+																					</nav>
+																					<div class="content tab">
+																						<section id="section-1" class="content-current">
+																							<div class="">
+																							<table class="table" style="margin-top: 30px;">
+														                                <thead>
+														                                    <tr>
+														                                        <th>Contact Name</th>
+														                                        <th>Assigned User</th>
+														                                        <th>Email</th>
+														                                        <th>Last added Note</th>
+														                                    </tr>
+														                                </thead>
+														                                <tbody>
+														                                    														                                        
+														                                </tbody>
+														                            </table>
+																							</div>
+																						
+																						</section>
+																						<section id="section-2">
+																							<div class="">
+																							 <br>
+														                            <table class="table">
+														                                <thead>
+														                                    <tr>
+														                                        <th>Contact Name</th>
+														                                        <th>Date of Site Visit</th>
+														                                        <th>Project Name</th>
+														                                        <!-- <th>Lastest Comment</th> -->
+														                                    </tr>
+														                                </thead>
+														                                <tbody>
+														                                    <tr><td colspan="3">No records found!</td></tr>                                        
+														                                </tbody>
+														                            </table>
+																							</div>
+																						</section>
+																					</div><!-- /content -->
+																				</div>
+																				<!-- /tabs -->
+																				
+																			</div>
+																			<script src="<?php echo base_url()?>/assets/js/cbpFWTabs.js"></script>
+																			<script>
+																				new CBPFWTabs( document.getElementById( 'tabs' ) );
+																			</script>
+																	
+																 
+																 <div class="clearfix"> </div>
+														</div>
+                <div class="col-md-12">
+                    <div class="">
+                        <h2 align="center">Lead Source Report</h2>
                         <div class="col-md-12 ctr">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>User Name</th>
-                                        <th>Number of calls</th>
-                                        <!-- <th>Calls done Yesterday</th>
-                                        <th>Calls for Today</th>
-                                        <th>Productivity</th> -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($productivity_report as $key => $value) { ?>
-                                        <tr>
-                                            <td><?php echo $value->first_name." ".$value->last_name; ?></td>
-                                            <td>
-                                                <a href="<?php echo base_url().'view_callbacks?advisor='.$value->id.'&for=dashboard'; ?>"><?php echo $value->total_calls; ?></a>
-                                            </td>
-                                            <!-- <td><?php echo $value->yesterday_callback_count; ?></td>
-                                            <td><?php echo $value->today_callback_count; ?></td>
-                                            <td><?php echo $value->productivity; ?> %</td> -->
-                                        </tr>
-                                    <?php } ?>
-                                        
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                  <div class="col-md-4">
-                    <div class="row top-mg dash-wd">
-                        <h2>Live Feedback<button type="submit" class="btn btn-default" id="refresh">Refresh</button></h2>
-                        <div class="col-md-12 ctr">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>User Name</th>
-                                        <th>Last Login Time</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="live_feed_back_body">
-                                    <?php foreach ($live_feed_back as $key => $value) { ?>
-                                        <tr>
-                                            <td><?php echo $value->first_name." ".$value->last_name; ?> (<?php echo ($value->type == 1)?'User':'Manager'; ?>)</td>
-                                            <td>
-                                                <?php echo $value->last_login; ?>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                        
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-              
-            </div>
-            <br/><br/><br/><br/><br/>
-            
-        </div>
-        <div class="container">
-            <div class="top-mg dash-wd">
-                <div class="col-md-4">
-                    <div class="row top-mg dash-wd">
-                        <h2>Source Analysis</h2>
-                        <div class="col-md-12 ctr">
-                            <table class="table">
+                            <table align="center" style="width:50%" class="table">
                                 <thead>
                                     <tr>
                                         <th>Lead Source</th>
@@ -767,39 +883,37 @@
                             </table>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row top-mg dash-wd">
-                        <h2>Revenue List</h2>
-                        <input type="text" class="form-control" id="revenueMonth" name="email2" placeholder="Click to filter" value="<?php echo date('m/Y'); ?>" > <button id="filter_revenue" onclick="get_revenues();">Filter</button>
-                        <br>
+                    <div class="">
+                        <h2 align="center">Call Reports</h2>
                         <div class="col-md-12 ctr">
-                            <table class="table">
+                            <table align="center" style="width:50%" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Customer Name</th>
-                                        <th>User name</th>
-                                        <th>Project</th>
-                                        <th>Net Revenue</th>
-                                        <th>Status</th>
+                                        <th>User Name</th>
+                                        <th>Number of calls</th>
+                                        <th>Calls done Yesterday</th>
+                                        <th>Calls for Today</th>
+                                        <th>Productivity</th>
                                     </tr>
                                 </thead>
-                                <tbody id="revenue_data">
+                                <tbody>
+                                    <?php foreach ($call_reports as $key => $value) { ?>
+                                        <tr>
+                                            <td><?php echo $value->first_name." ".$value->last_name; ?></td>
+                                            <td><?php echo $value->total_calls; ?></td>
+                                            <td><?php echo $value->yesterday_callback_count; ?></td>
+                                            <td><?php echo $value->today_callback_count; ?></td>
+                                            <td><?php echo $value->productivity; ?> %</td>
+                                        </tr>
+                                    <?php } ?>
                                         
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <!--<div class="col-md-3">
-                    <div class="row top-mg dash-wd">
-                        <h2>Name/State/</h2>
-                    </div>
-                </div>-->
-            </div>
+             </div>
         </div>
-    <?php } 
-    else{ ?>
         <div class="container"> 
             <div class="top-mg dash-wd">
                 <div class="col-md-5">
