@@ -676,7 +676,131 @@
             </div>
         </div>
     <?php }
-    else { ?>
+    elseif($this->session->userdata('user_type')=="director" ) { ?>
+        <div class="container"> 
+            <div class="top-mg dash-wd">
+                <div class="col-md-5">
+                    <div class="row top-mg dash-wd">
+                        <h2>Productivity</h2>
+                        <div class="col-md-12 ctr">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Number of calls</th>
+                                        <!-- <th>Calls done Yesterday</th>
+                                        <th>Calls for Today</th>
+                                        <th>Productivity</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($productivity_report as $key => $value) { ?>
+                                        <tr>
+                                            <td><?php echo $value->first_name." ".$value->last_name; ?></td>
+                                            <td>
+                                                <a href="<?php echo base_url().'view_callbacks?advisor='.$value->id.'&for=dashboard'; ?>"><?php echo $value->total_calls; ?></a>
+                                            </td>
+                                            <!-- <td><?php echo $value->yesterday_callback_count; ?></td>
+                                            <td><?php echo $value->today_callback_count; ?></td>
+                                            <td><?php echo $value->productivity; ?> %</td> -->
+                                        </tr>
+                                    <?php } ?>
+                                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-md-4">
+                    <div class="row top-mg dash-wd">
+                        <h2>Live Feedback<button type="submit" class="btn btn-default" id="refresh">Refresh</button></h2>
+                        <div class="col-md-12 ctr">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Last Login Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="live_feed_back_body">
+                                    <?php foreach ($live_feed_back as $key => $value) { ?>
+                                        <tr>
+                                            <td><?php echo $value->first_name." ".$value->last_name; ?> (<?php echo ($value->type == 1)?'User':'Manager'; ?>)</td>
+                                            <td>
+                                                <?php echo $value->last_login; ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+            <br/><br/><br/><br/><br/>
+            
+        </div>
+        <div class="container">
+            <div class="top-mg dash-wd">
+                <div class="col-md-4">
+                    <div class="row top-mg dash-wd">
+                        <h2>Source Analysis</h2>
+                        <div class="col-md-12 ctr">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Lead Source</th>
+                                        <th>Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($lead_source_report as $key => $value) { ?>
+                                        <tr>
+                                            <td><?php echo $this->common_model->get_leadsource_name($key); ?></td>
+                                            <td><?php echo $value; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row top-mg dash-wd">
+                        <h2>Revenue List</h2>
+                        <input type="text" class="form-control" id="revenueMonth" name="email2" placeholder="Click to filter" value="<?php echo date('m/Y'); ?>" > <button id="filter_revenue" onclick="get_revenues();">Filter</button>
+                        <br>
+                        <div class="col-md-12 ctr">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>User name</th>
+                                        <th>Project</th>
+                                        <th>Net Revenue</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="revenue_data">
+                                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <div class="row top-mg dash-wd">
+                        <h2>Name/State/</h2>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    <?php }?>
+       <?php }
+    else{ ?>
         <div class="container"> 
             <div class="top-mg dash-wd">
                 <div class="col-md-5">
