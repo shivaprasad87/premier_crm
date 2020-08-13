@@ -798,8 +798,7 @@
                 </div>-->
             </div>
         </div>
-    <?php }?>
-       <?php }
+    <?php } 
     else{ ?>
         <div class="container"> 
             <div class="top-mg dash-wd">
