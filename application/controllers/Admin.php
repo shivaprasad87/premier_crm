@@ -1735,6 +1735,7 @@ if($this->input->post('budget')!='')
 		$data['name'] ="admin";
 		$data['heading'] ="Manage Project";
 		$data['all_projects'] = $this->common_model->all_projects();
+		$data['active_cities'] = $this->common_model->all_active_cities();
 		$this->load->view('admin/projects',$data);
 	}
 
@@ -1902,9 +1903,11 @@ if($this->input->post('budget')!='')
 	function add_project(){
 		$project=$this->input->post('project');
 		$builder=$this->input->post('builder');
+		$city_id = $this->input->post('city_id');
 		$data=array(
 			'name'=>$project,
 			'builder_id'=>$builder,
+			'city_id' =>$city_id,
 			'date_added'=>date('Y-m-d H:i:s')
 		);
 		$query=$this->db->insert('project',$data);

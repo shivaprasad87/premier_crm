@@ -158,8 +158,9 @@ class Common_model extends MY_Model {
     }
 
     public function all_projects(){
-        $this->db->select('project.*,builder.name as builder_name');
+        $this->db->select('project.*,builder.name as builder_name,city.name as city_name');
         $this->db->join('builder','builder.id = project.builder_id','left');
+        $this->db->join('city','city.id = project.city_id','left');
         $this->db->from('project');
         $this->db->order_by('id','desc');
         $query=$this->db->get();
