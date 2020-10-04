@@ -186,9 +186,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 					<table>
 						<tr>
 							<td>
-								<a onclick="edit('<?php echo $data->id; ?>')" data-toggle="modal" data-target="#modal_edit">
+								<!-- <a onclick="edit('<?php echo $data->id; ?>')" data-toggle="modal" data-target="#modal_edit">
 									<i class="fa fa-home fa-2x"  title="Detail" style="color:#ff1122; font-size:21px;padding-right:7px;" aria-hidden="true"></i>
-								</a>
+								</a> --> 
+                                        <a href="<?= base_url('callback-details?id='.$data->id) ?>" target="_blank">
+                                            <i class="fa fa-home fa-2x"  title="Detail" style="" aria-hidden="true"></i>
+                                        </a>
 							</td>
 							<td>
 								<i class="fa fa-keyboard-o fa-2x" onclick="abc()" title="Notes" style="color:#ff1122; font-size:21px;padding-right:7px;" aria-hidden="true"></i>
